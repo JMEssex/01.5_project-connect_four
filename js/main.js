@@ -32,7 +32,7 @@ gameBoard = [colA.boardArr, colB.boardArr, colC.boardArr, colD.boardArr, colE.bo
 
 //  Standard check to see who's turn it is.
 function takeTurns() {
-  return (turn % 2 ? 'black' : 'red')
+  return (turn % 2 ? player1.token : player2.token)
 }
 
 //  Removes the null values from the array before pushing
@@ -57,6 +57,8 @@ function drop(arr, playerToken) {
   removeNulls(arr)
   arr.push(playerToken)
   console.log(arr)
+  tokenOccupancy = arr.length
+  console.log(arr.length)
   addNulls(arr)
 }
 
@@ -67,12 +69,25 @@ function fullCheck(arr, playerToken, columnObj){
     console.log(arr)
     columnObj.dropCount++
     console.log(columnObj.dropCount)
+    if (columnObj.dropCount = 6) {
+      removeListeners()
+    }
     turn++
   } else {
     alert("This row is already full")
   }
 }
 
-function clickRow(arr, playerToken, columnObj, fn) {
-//  adding event listener to the .dropper class
-$('.available').on('click', fn())
+///////// Functions I was working on LAST before Push ///////////
+
+// function clickDropper(){
+//   if(this.className === 'dropper available') {
+//     var droppingToken = takeTurns()
+//     var columnId = $(this).parent().attr('id')
+//     var tokenOccupancy
+//     $('#'+columnId)
+//     }
+
+// function clickRow(arr, playerToken, columnObj, fn) {
+// //  adding event listener to the .dropper class
+// $('.available').on('click', fn())
